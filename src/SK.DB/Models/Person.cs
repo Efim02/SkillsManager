@@ -7,12 +7,6 @@
     /// </summary>
     public class Person
     {
-        /// <inheritdoc cref="Person" />
-        public Person()
-        {
-            Skills = new List<Skill>();
-        }
-
         /// <summary>
         /// Отображаемое имя.
         /// </summary>

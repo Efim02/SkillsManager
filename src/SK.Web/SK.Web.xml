@@ -1,0 +1,182 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SK.Web</name>
+    </assembly>
+    <members>
+        <member name="T:SkillsManager.Controllers.PersonController">
+            <summary>
+            Контроллер сотрудников.
+            </summary>
+        </member>
+        <member name="F:SkillsManager.Controllers.PersonController._mapper">
+            <summary>
+            Картограф.
+            </summary>
+        </member>
+        <member name="F:SkillsManager.Controllers.PersonController._personService">
+            <summary>
+            Сервис сотрудника.
+            </summary>
+        </member>
+        <member name="M:SkillsManager.Controllers.PersonController.#ctor(AutoMapper.IMapper,SkillsManager.Services.PersonService)">
+            <inheritdoc cref="T:SkillsManager.Controllers.PersonController" />
+        </member>
+        <member name="M:SkillsManager.Controllers.PersonController.AddPerson(SK.BL.Models.Person)">
+            <summary>
+            Добавить сотрудника.
+            </summary>
+            <param name="person">Сотрудник.</param>
+            <returns>Id сотрудника.</returns>
+        </member>
+        <member name="M:SkillsManager.Controllers.PersonController.GetPerson(System.Int64)">
+            <summary>
+            Получить сотрудника по Id.
+            </summary>
+            <param name="personId">Id сотрудника.</param>
+            <returns>Сотрудник.</returns>
+        </member>
+        <member name="M:SkillsManager.Controllers.PersonController.GetPersons">
+            <summary>
+            Получить всех сотрудников.
+            </summary>
+            <returns>Сотрудников.</returns>
+        </member>
+        <member name="M:SkillsManager.Controllers.PersonController.PutPerson(System.Int64,SK.BL.Models.Person)">
+            <summary>
+            Изменить существующего сотрудника.
+            </summary>
+            <param name="personId">Id сотрудника.</param>
+            <param name="person">Тело сотрудника.</param>
+        </member>
+        <member name="M:SkillsManager.Controllers.PersonController.DeletePerson(System.Int64)">
+            <summary>
+            Удалить сотрудника.
+            </summary>
+            <param name="personId">Id сотрудника.</param>
+        </member>
+        <member name="T:SkillsManager.Exceptions.BadRequestException">
+            <summary>
+            Исключение о плохом запросе.
+            </summary>
+            <remarks>
+            Создан, для использования в конструкторе <see cref="T:Microsoft.AspNetCore.Http.BadHttpRequestException" /> перечисление
+            <see cref="T:System.Net.HttpStatusCode" />.
+            </remarks>
+        </member>
+        <member name="M:SkillsManager.Exceptions.BadRequestException.#ctor(System.String,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:SkillsManager.Exceptions.BadRequestException.#ctor(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:SkillsManager.Exceptions.BadRequestException.#ctor(System.String,System.Int32,System.Exception)">
+            <inheritdoc />
+        </member>
+        <member name="M:SkillsManager.Exceptions.BadRequestException.#ctor(System.String,System.Exception)">
+            <inheritdoc />
+        </member>
+        <member name="M:SkillsManager.Exceptions.BadRequestException.#ctor(System.String,System.Net.HttpStatusCode)">
+            <inheritdoc cref="M:SkillsManager.Exceptions.BadRequestException.#ctor(System.String,System.Int32)"/>
+            <param name="message">Сообщение ошибки.</param>
+            <param name="httpStatusCode">Код ошибки.</param>
+        </member>
+        <member name="T:SkillsManager.Extensions.TransientsExtensions">
+            <summary>
+            Расширение интерфейса сервисов <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection" />, для внедрения зависимостей.
+            </summary>
+        </member>
+        <member name="F:SkillsManager.Extensions.TransientsExtensions._mapperConfiguration">
+            <summary>
+            Конфигурация картографа.
+            </summary>
+        </member>
+        <member name="M:SkillsManager.Extensions.TransientsExtensions.ConnectAutoMapper(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Подключение <see cref="T:AutoMapper.IMapper" />.
+            </summary>
+            <param name="serviceCollection">Коллекция сервисов.</param>
+        </member>
+        <member name="M:SkillsManager.Extensions.TransientsExtensions.ConnectPersonService(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Подключение <see cref="T:SkillsManager.Services.PersonService" />.
+            </summary>
+            <param name="serviceCollection">Коллекция сервисов.</param>
+        </member>
+        <member name="M:SkillsManager.Extensions.TransientsExtensions.ConnectSkContext(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Подключение <see cref="T:SK.DB.SkContext" />.
+            </summary>
+            <param name="serviceCollection">Коллекция сервисов.</param>
+        </member>
+        <member name="M:SkillsManager.Extensions.TransientsExtensions.ConnectSwagger(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Подключение Swagger />.
+            </summary>
+            <param name="serviceCollection">Коллекция сервисов.</param>
+        </member>
+        <member name="T:SkillsManager.Program">
+            <summary>
+            Главный класс.
+            </summary>
+        </member>
+        <member name="M:SkillsManager.Program.CreateHostBuilder(System.String[])">
+            <summary>
+            Построение сервера.
+            </summary>
+            <param name="args">Аргументы.</param>
+            <returns>Строитель.</returns>
+        </member>
+        <member name="M:SkillsManager.Program.Main(System.String[])">
+            <summary>
+            Стартовая точка сервера.
+            </summary>
+            <param name="args">Аргументы.</param>
+        </member>
+        <member name="T:SkillsManager.Services.PersonService">
+            <summary>
+            Сервис сотрудника.
+            </summary>
+        </member>
+        <member name="F:SkillsManager.Services.PersonService._skContext">
+            <summary>
+            Контекст бд.
+            </summary>
+        </member>
+        <member name="M:SkillsManager.Services.PersonService.#ctor(SK.DB.SkContext)">
+            <inheritdoc cref="T:SkillsManager.Services.PersonService" />
+        </member>
+        <member name="M:SkillsManager.Services.PersonService.AddPerson(SK.DB.Models.Person)">
+            <inheritdoc cref="M:SkillsManager.Controllers.PersonController.AddPerson(SK.BL.Models.Person)" />
+        </member>
+        <member name="M:SkillsManager.Services.PersonService.DeletePerson(System.Int64)">
+            <inheritdoc cref="M:SkillsManager.Controllers.PersonController.DeletePerson(System.Int64)" />
+        </member>
+        <member name="M:SkillsManager.Services.PersonService.GetPerson(System.Int64)">
+            <inheritdoc cref="M:SkillsManager.Controllers.PersonController.GetPerson(System.Int64)" />
+        </member>
+        <member name="M:SkillsManager.Services.PersonService.GetPersons">
+            <inheritdoc cref="M:SkillsManager.Controllers.PersonController.GetPersons" />
+        </member>
+        <member name="M:SkillsManager.Services.PersonService.PutPerson(System.Int64,SK.DB.Models.Person)">
+            <inheritdoc cref="M:SkillsManager.Controllers.PersonController.PutPerson(System.Int64,SK.BL.Models.Person)" />
+        </member>
+        <member name="T:SkillsManager.Startup">
+            <summary>
+            Класс - конфигурация сервера.
+            </summary>
+        </member>
+        <member name="M:SkillsManager.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
+            <summary>
+            This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+            </summary>
+        </member>
+        <member name="M:SkillsManager.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            This method gets called by the runtime. Use this method to add services to the container.
+            For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
+            </summary>
+            <param name="services"></param>
+        </member>
+    </members>
+</doc>

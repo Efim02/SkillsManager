@@ -11,7 +11,20 @@
     /// </summary>
     public class SkContext : DbContext
     {
+        /// <summary>
+        /// Название подключения.
+        /// </summary>
         public const string CONNECTION_ADDRESS = "localhost";
+
+        /// <inheritdoc cref="SkContext" />
+        public SkContext()
+        {
+            ChangeTracker.LazyLoadingEnabled = false;
+
+            // Загружаем таблицы.
+            Skills.Load();
+            Persons.Load();
+        }
 
         /// <summary>
         /// Сотрудники.
@@ -29,7 +42,15 @@
             optionsBuilder.UseMySql(
                 $"server={CONNECTION_ADDRESS};user=user;password=password;port=3306;database=manager",
                 new MySqlServerVersion(new Version(5, 7, 37)));
+
             base.OnConfiguring(optionsBuilder);
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.HasDefaultSchema("public");
+
+            base.OnModelCreating(modelBuilder);
         }
     }
 }

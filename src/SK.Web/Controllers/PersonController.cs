@@ -77,13 +77,23 @@
         /// </summary>
         /// <param name="personId">Id сотрудника.</param>
         /// <param name="person">Тело сотрудника.</param>
-        /// <returns></returns>
         [HttpPut]
         [Route("{personId:long}")]
         public async Task PutPerson(long personId, Person person)
         {
             var dbPerson = _mapper.Map<SK.DB.Models.Person>(person);
             await _personService.PutPerson(personId, dbPerson);
+        }
+
+        /// <summary>
+        /// Удалить сотрудника.
+        /// </summary>
+        /// <param name="personId">Id сотрудника.</param>
+        [HttpDelete]
+        [Route("{personId:long}")]
+        public async Task DeletePerson(long personId)
+        {
+            await _personService.DeletePerson(personId);
         }
     }
 }

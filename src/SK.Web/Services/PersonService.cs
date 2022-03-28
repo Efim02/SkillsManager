@@ -3,8 +3,6 @@
     using System.Net;
     using System.Threading.Tasks;
 
-    using AutoMapper;
-
     using Microsoft.EntityFrameworkCore;
 
     using SK.DB;
@@ -19,20 +17,14 @@
     public class PersonService
     {
         /// <summary>
-        /// Картограф.
-        /// </summary>
-        private readonly IMapper _mapper;
-
-        /// <summary>
         /// Контекст бд.
         /// </summary>
         private readonly SkContext _skContext;
 
         /// <inheritdoc cref="PersonService" />
-        public PersonService(SkContext skContext, IMapper mapper)
+        public PersonService(SkContext skContext)
         {
             _skContext = skContext;
-            _mapper = mapper;
         }
 
         /// <inheritdoc cref="PersonController.AddPerson" />
@@ -41,6 +33,15 @@
             await _skContext.Persons.AddAsync(person);
             await _skContext.SaveChangesAsync();
             return person.Id;
+        }
+
+        /// <inheritdoc cref="PersonController.DeletePerson" />
+        public async Task DeletePerson(long personId)
+        {
+            var dbPerson = await GetPerson(personId);
+            _skContext.Persons.Remove(dbPerson);
+
+            await _skContext.SaveChangesAsync();
         }
 
         /// <inheritdoc cref="PersonController.GetPerson" />
@@ -62,12 +63,11 @@
         /// <inheritdoc cref="PersonController.PutPerson" />
         public async Task PutPerson(long personId, Person person)
         {
-            var dbPerson = await _skContext.Persons.FirstOrDefaultAsync(p => p.Id == personId);
-            if (person is null)
-                throw new BadRequestException($"Сотрудник с Id {personId} не найден.", HttpStatusCode.NotFound);
+            var dbPerson = await GetPerson(personId);
 
-            _mapper.Map(person, dbPerson);
-            dbPerson.Id = personId;
+            dbPerson.DisplayName = person.DisplayName;
+            dbPerson.Name = person.Name;
+            dbPerson.Skills = person.Skills;
 
             await _skContext.SaveChangesAsync();
         }

@@ -36,24 +36,24 @@ namespace SK.DB.Migrations
                     Level = table.Column<byte>(type: "tinyint unsigned", nullable: false),
                     Name = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    OwnerPersonId = table.Column<long>(type: "bigint", nullable: true)
+                    PersonId = table.Column<long>(type: "bigint", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Skills", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Skills_Persons_OwnerPersonId",
-                        column: x => x.OwnerPersonId,
+                        name: "FK_Skills_Persons_PersonId",
+                        column: x => x.PersonId,
                         principalTable: "Persons",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Skills_OwnerPersonId",
+                name: "IX_Skills_PersonId",
                 table: "Skills",
-                column: "OwnerPersonId");
+                column: "PersonId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

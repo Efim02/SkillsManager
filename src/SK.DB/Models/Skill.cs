@@ -23,6 +23,11 @@
         /// <summary>
         /// Владелец навыка.
         /// </summary>
-        public Person OwnerPerson { get; set; }
+        public virtual Person OwnerPerson { get; set; }
+
+        /// <summary>
+        /// Идентификатор сотрудника.
+        /// </summary>
+        public long PersonId { get; set; }
     }
 }

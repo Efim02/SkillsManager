@@ -14,5 +14,10 @@
         /// Уровень навыка.
         /// </summary>
         public byte Level { get; set; }
+
+        /// <summary>
+        /// Идентификатор сотрудника.
+        /// </summary>
+        public long PersonId { get; set; }
     }
 }

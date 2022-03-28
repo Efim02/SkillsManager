@@ -1,9 +1,13 @@
 namespace SkillsManager
 {
+    using System.Linq;
+
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
+
+    using SK.DB;
 
     using SkillsManager.Extensions;
 
@@ -24,6 +28,12 @@ namespace SkillsManager
             app.UseEndpoints(
                 endPoints =>
                     endPoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}"));
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
+            });
         }
 
         /// <summary>
@@ -33,12 +43,15 @@ namespace SkillsManager
         /// <param name="services"></param>
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddControllers();
+            services.AddMvcCore();
+
             services.ConnectAutoMapper();
             services.ConnectSkContext();
 
             services.ConnectPersonService();
 
-            services.AddMvcCore();
+            services.ConnectSwagger();
         }
     }
 }

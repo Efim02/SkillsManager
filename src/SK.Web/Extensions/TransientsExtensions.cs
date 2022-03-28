@@ -1,8 +1,11 @@
 ﻿namespace SkillsManager.Extensions
 {
+    using System.Reflection;
+
     using AutoMapper;
 
     using Microsoft.Extensions.DependencyInjection;
+    using Microsoft.OpenApi.Models;
 
     using SK.BL.Models;
     using SK.DB;
@@ -51,6 +54,20 @@
         public static void ConnectSkContext(this IServiceCollection serviceCollection)
         {
             serviceCollection.AddSingleton<SkContext>();
+        }
+
+        /// <summary>
+        /// Подключение Swagger />.
+        /// </summary>
+        /// <param name="serviceCollection">Коллекция сервисов.</param>
+        public static void ConnectSwagger(this IServiceCollection serviceCollection)
+        {
+            serviceCollection.AddSwaggerGen(
+                s =>
+                {
+                    s.SwaggerDoc("v1", new OpenApiInfo { Title = "Sk Api", Version = "v1" });
+                    s.IncludeXmlComments($"{Assembly.GetExecutingAssembly().GetName().Name}.xml");
+                });
         }
     }
 }
