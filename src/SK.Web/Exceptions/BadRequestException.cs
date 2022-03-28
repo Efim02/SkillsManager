@@ -14,31 +14,7 @@
     /// </remarks>
     public class BadRequestException : BadHttpRequestException
     {
-        /// <inheritdoc />
-        public BadRequestException(string message, int statusCode)
-            : base(message, statusCode)
-        {
-        }
-
-        /// <inheritdoc />
-        public BadRequestException(string message)
-            : base(message)
-        {
-        }
-
-        /// <inheritdoc />
-        public BadRequestException(string message, int statusCode, Exception innerException)
-            : base(message, statusCode, innerException)
-        {
-        }
-
-        /// <inheritdoc />
-        public BadRequestException(string message, Exception innerException)
-            : base(message, innerException)
-        {
-        }
-
-        /// <inheritdoc cref="BadRequestException(string, int)"/>
+        /// <inheritdoc cref="BadHttpRequestException(string, int)"/>
         /// <param name="message">Сообщение ошибки.</param>
         /// <param name="httpStatusCode">Код ошибки.</param>
         public BadRequestException(string message, HttpStatusCode httpStatusCode)

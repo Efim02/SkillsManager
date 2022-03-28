@@ -64,20 +64,8 @@
             <see cref="T:System.Net.HttpStatusCode" />.
             </remarks>
         </member>
-        <member name="M:SkillsManager.Exceptions.BadRequestException.#ctor(System.String,System.Int32)">
-            <inheritdoc />
-        </member>
-        <member name="M:SkillsManager.Exceptions.BadRequestException.#ctor(System.String)">
-            <inheritdoc />
-        </member>
-        <member name="M:SkillsManager.Exceptions.BadRequestException.#ctor(System.String,System.Int32,System.Exception)">
-            <inheritdoc />
-        </member>
-        <member name="M:SkillsManager.Exceptions.BadRequestException.#ctor(System.String,System.Exception)">
-            <inheritdoc />
-        </member>
         <member name="M:SkillsManager.Exceptions.BadRequestException.#ctor(System.String,System.Net.HttpStatusCode)">
-            <inheritdoc cref="M:SkillsManager.Exceptions.BadRequestException.#ctor(System.String,System.Int32)"/>
+            <inheritdoc cref="M:Microsoft.AspNetCore.Http.BadHttpRequestException.#ctor(System.String,System.Int32)"/>
             <param name="message">Сообщение ошибки.</param>
             <param name="httpStatusCode">Код ошибки.</param>
         </member>

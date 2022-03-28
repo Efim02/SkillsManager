@@ -30,10 +30,7 @@ namespace SkillsManager
                     endPoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}"));
 
             app.UseSwagger();
-            app.UseSwaggerUI(c =>
-            {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
-            });
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "v1"));
         }
 
         /// <summary>
