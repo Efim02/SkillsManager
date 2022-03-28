@@ -2,10 +2,14 @@ namespace SkillsManager
 {
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
-    using Microsoft.AspNetCore.Http;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
 
+    using SkillsManager.Extensions;
+
+    /// <summary>
+    /// Класс - конфигурация сервера.
+    /// </summary>
     public class Startup
     {
         /// <summary>
@@ -17,9 +21,9 @@ namespace SkillsManager
                 app.UseDeveloperExceptionPage();
 
             app.UseRouting();
-
             app.UseEndpoints(
-                endpoints => { endpoints.MapGet("/", async context => { await context.Response.WriteAsync("Hello World!"); }); });
+                endPoints =>
+                    endPoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}"));
         }
 
         /// <summary>
@@ -29,6 +33,12 @@ namespace SkillsManager
         /// <param name="services"></param>
         public void ConfigureServices(IServiceCollection services)
         {
+            services.ConnectAutoMapper();
+            services.ConnectSkContext();
+
+            services.ConnectPersonService();
+
+            services.AddMvcCore();
         }
     }
 }
