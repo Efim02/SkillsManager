@@ -6,6 +6,11 @@
     public class Skill
     {
         /// <summary>
+        /// Id навыка в бд.
+        /// </summary>
+        public long Id { get; set; }
+
+        /// <summary>
         /// Уровень навыка.
         /// </summary>
         public byte Level { get; set; }

@@ -22,6 +22,7 @@
             {
                 cfg.CreateMap<Person, SK.DB.Models.Person>().ReverseMap();
                 cfg.CreateMap<Skill, SK.DB.Models.Skill>().ForMember(dest => dest.OwnerPerson, source => source.Ignore()).
+                    ForMember(dest => dest.Id, source => source.Ignore()).
                     ReverseMap();
             });
 
