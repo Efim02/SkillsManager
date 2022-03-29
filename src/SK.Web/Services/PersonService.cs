@@ -47,7 +47,7 @@
         /// <inheritdoc cref="PersonController.GetPerson" />
         public async Task<Person> GetPerson(long personId)
         {
-            var person = await _skContext.Persons.FirstOrDefaultAsync(p => p.Id == personId);
+            var person = await _skContext.Persons.Include(p => p.Skills).FirstOrDefaultAsync(p => p.Id == personId);
             if (person is null)
                 throw new BadRequestException($"Сотрудник с Id {personId} не найден.", HttpStatusCode.NotFound);
 
@@ -57,7 +57,7 @@
         /// <inheritdoc cref="PersonController.GetPersons" />
         public async Task<Person[]> GetPersons()
         {
-            return await _skContext.Persons.ToArrayAsync();
+            return await _skContext.Persons.Include(p => p.Skills).ToArrayAsync();
         }
 
         /// <inheritdoc cref="PersonController.PutPerson" />

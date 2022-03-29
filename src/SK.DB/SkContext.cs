@@ -1,6 +1,7 @@
 ﻿namespace SK.DB
 {
     using System;
+    using System.Linq;
 
     using Microsoft.EntityFrameworkCore;
 
@@ -12,16 +13,6 @@
     /// </summary>
     public class SkContext : DbContext
     {
-        /// <inheritdoc cref="SkContext" />
-        public SkContext()
-        {
-            ChangeTracker.LazyLoadingEnabled = false;
-
-            // Загружаем таблицы, т.к. иначе данные навыков для сотрудников не отобразятся.
-            Skills.Load();
-            Persons.Load();
-        }
-
         /// <summary>
         /// Сотрудники.
         /// </summary>
@@ -40,13 +31,6 @@
                 new MySqlServerVersion(new Version(5, 7, 37)));
 
             base.OnConfiguring(optionsBuilder);
-        }
-
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.HasDefaultSchema("public");
-
-            base.OnModelCreating(modelBuilder);
         }
     }
 }

@@ -1,13 +1,9 @@
 namespace SkillsManager
 {
-    using System.Linq;
-
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
-
-    using SK.DB;
 
     using SkillsManager.Extensions;
 

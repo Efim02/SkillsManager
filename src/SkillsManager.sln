@@ -9,6 +9,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SK.BL", "SK.BL\SK.BL.csproj
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SK.DB", "SK.DB\SK.DB.csproj", "{13120750-6D25-4863-9E9C-48F4EBD7751E}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{4636BAE7-550F-4C77-B626-1505FA3A46B2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SK.Web.Tests", "Tests\SK.Web.Tests\SK.Web.Tests.csproj", "{A2BC4458-4518-4B54-B285-354534938BEA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,9 +31,16 @@ Global
 		{13120750-6D25-4863-9E9C-48F4EBD7751E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{13120750-6D25-4863-9E9C-48F4EBD7751E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{13120750-6D25-4863-9E9C-48F4EBD7751E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2BC4458-4518-4B54-B285-354534938BEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2BC4458-4518-4B54-B285-354534938BEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2BC4458-4518-4B54-B285-354534938BEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2BC4458-4518-4B54-B285-354534938BEA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A2BC4458-4518-4B54-B285-354534938BEA} = {4636BAE7-550F-4C77-B626-1505FA3A46B2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {16030839-7AC9-4CC6-A685-94D01DD88A58}
