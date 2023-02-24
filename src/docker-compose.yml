@@ -1,0 +1,34 @@
+version: '3.4'
+
+services:      
+  sk.db:
+    container_name: skills-manager-db
+    image: mysql:5.7
+    volumes:
+      - skills_manager_db_volume:/mssql/data
+      - skills_manager_db_volume:/var/lib/mysql
+    environment:
+      MYSQL_USER: 'user'
+      MYSQL_PASSWORD: 'password'
+      MYSQL_ROOT_PASSWORD: 'password'
+      MYSQL_DATABASE: 'manager'
+    ports:
+      - '3306:3306'
+    expose:
+        - '3306'
+
+  sk.web:
+    container_name: skills-manager-web-api
+    image: efimka/skills-manager
+    depends_on:
+      sk.db:
+      #service_started, service_healthy, service_completed_successfully
+        condition: service_started
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 39754:80
+
+volumes:
+  skills_manager_db_volume:

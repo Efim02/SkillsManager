@@ -1,9 +1,11 @@
 ﻿namespace SkillsManager.Extensions
 {
     using System.Reflection;
+    using System.Threading.Tasks;
 
     using AutoMapper;
 
+    using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.OpenApi.Models;
 
@@ -54,6 +56,18 @@
         public static void ConnectSkContext(this IServiceCollection serviceCollection)
         {
             serviceCollection.AddSingleton<SkContext>();
+
+            using var skContext = new SkContext();
+
+            for (var counter = 0; counter < 10; counter++)
+            {
+                if (skContext.Database.CanConnect())
+                    break;
+
+                Task.Delay(5000).Wait();
+            }
+
+            skContext.Database.Migrate();
         }
 
         /// <summary>

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31112.23
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33403.182
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SK.Web", "SK.Web\SK.Web.csproj", "{F6D43378-C34F-4E74-8104-CE1117C9083A}"
 EndProject
@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SK.DB", "SK.DB\SK.DB.csproj
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{4636BAE7-550F-4C77-B626-1505FA3A46B2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SK.Web.Tests", "Tests\SK.Web.Tests\SK.Web.Tests.csproj", "{A2BC4458-4518-4B54-B285-354534938BEA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SK.Web.Tests", "Tests\SK.Web.Tests\SK.Web.Tests.csproj", "{A2BC4458-4518-4B54-B285-354534938BEA}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{F7EBC158-68E9-4DC9-841F-A529EF9811A5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,6 +37,10 @@ Global
 		{A2BC4458-4518-4B54-B285-354534938BEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A2BC4458-4518-4B54-B285-354534938BEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A2BC4458-4518-4B54-B285-354534938BEA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7EBC158-68E9-4DC9-841F-A529EF9811A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7EBC158-68E9-4DC9-841F-A529EF9811A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7EBC158-68E9-4DC9-841F-A529EF9811A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7EBC158-68E9-4DC9-841F-A529EF9811A5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

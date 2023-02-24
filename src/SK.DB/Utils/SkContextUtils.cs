@@ -19,6 +19,11 @@
         /// Название подключения к бд.
         /// </summary>
         public const string CONNECTION_NAME = "DebugConnection";
+#else
+        /// <summary>
+        /// Название подключения к бд.
+        /// </summary>
+        public const string CONNECTION_NAME = "ReleaseConnection";
 #endif
         /// <summary>
         /// Получить строку подключения к бд.
