@@ -1,0 +1,38 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sk-pod-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sk-pod
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: sk-pod
+    spec:
+      containers:
+      - image: efimka/skills-manager
+        name: skills-manager-web-api
+        ports:
+        - containerPort: 80
+        env:
+        - name: "ASPNETCORE_ENVIRONMENT"
+          value: "kubernetes"
+        - name: ASPNETCORE_URLS
+          value: http://+:80
+        resources:
+          requests:
+            cpu: 100m
+            memory: 100Mi
+          limits:
+            cpu: 100m
+            memory: 100Mi
+...

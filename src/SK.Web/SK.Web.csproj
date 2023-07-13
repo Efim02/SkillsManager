@@ -35,6 +35,7 @@
 
   <ItemGroup>
     <None Include="..\Dockerfile" Link="Dockerfile" />
+    <None Include="..\pod.yaml" Link="pod.yaml" />
   </ItemGroup>
 
   <ItemGroup>

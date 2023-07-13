@@ -24,6 +24,7 @@ namespace SkillsManager
 
             loggerFactory.AddProvider(new FileLogProvider());
 
+            app.UseCors(o => o.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
             app.UseRouting();
             app.UseEndpoints(
                 endPoints =>

@@ -1,0 +1,60 @@
+---
+# Стандартный вариант с kind:Pod, без особенностей.
+apiVersion: v1
+kind: Pod
+metadata:
+  name: sk-pod
+spec:
+  containers:
+  - image: efimka/skills-manager
+    name: skills-manager-web-api
+    ports:
+    - containerPort: 80
+    env:
+    - name: "ASPNETCORE_ENVIRONMENT"
+      value: "Kubernetes"
+    - name: ASPNETCORE_URLS
+      value: http://+:80
+    resources:
+      requests:
+        cpu: 100m
+        memory: 100Mi
+      limits:
+        cpu: 100m
+        memory: 100Mi
+    
+  # - image: mysql:5.7
+    # name: skills-manager-db
+    # env:
+    # - name: MYSQL_USER
+      # value: "user"
+    # - name: MYSQL_PASSWORD
+      # value: "password"
+    # - name: MYSQL_ROOT_PASSWORD
+      # value: "password"
+    # - name: MYSQL_DATABASE
+      # value: "manager"
+    # ports:
+    # - containerPort: 3306
+    # resources:
+      # requests:
+        # cpu: 100m
+        # memory: 100Mi
+      # limits:
+        # cpu: 100m
+        # memory: 100Mi
+    
+    # volumes:
+      # - name: sk_pod
+        # apiVersion: v1
+        # kind: PersistentVolumeClaim
+        # metadata:
+          # name: sk_pod_volume
+        # spec:
+          # resources:
+            # requests:
+              # storage: 500Mi
+          # volumeMode: Filesystem
+          # accessModes:
+            # - ReadWriteOnce
+...

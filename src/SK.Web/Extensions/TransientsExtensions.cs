@@ -1,5 +1,6 @@
 ﻿namespace SkillsManager.Extensions
 {
+    using System;
     using System.Reflection;
     using System.Threading.Tasks;
 
@@ -57,17 +58,26 @@
         {
             serviceCollection.AddSingleton<SkContext>();
 
-            using var skContext = new SkContext();
-
-            for (var counter = 0; counter < 10; counter++)
+            Task.Run(() =>
             {
-                if (skContext.Database.CanConnect())
-                    break;
+                try
+                {
+                    using var skContext = new SkContext();
+                    for (var counter = 0; counter < 10; counter++)
+                    {
+                        if (skContext.Database.CanConnect())
+                            break;
 
-                Task.Delay(5000).Wait();
-            }
+                        Task.Delay(5000).Wait();
+                    }
 
-            skContext.Database.Migrate();
+                    skContext.Database.Migrate();
+                }
+                catch (Exception exception)
+                {
+                    Console.WriteLine($"Ошибка: {exception}");
+                }
+            });
         }
 
         /// <summary>

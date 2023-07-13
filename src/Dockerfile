@@ -23,6 +23,6 @@ WORKDIR /app
 COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "SK.Web.dll"]
 
-ENV ASPNETCORE_URLS http://*:39754
+ENV ASPNETCORE_URLS http://*:80
 ENV ASPNETCORE_ENVIRONMENT=Development
-EXPOSE 39754
+EXPOSE 80

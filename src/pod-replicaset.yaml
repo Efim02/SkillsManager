@@ -1,0 +1,33 @@
+---
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: sk-pod-replicaset
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: sk-pod
+  template:
+    metadata:
+      labels:
+        app: sk-pod
+    spec:
+      containers:
+      - image: efimka/skills-manager
+        name: skills-manager-web-api
+        ports:
+        - containerPort: 80
+        env:
+        - name: "ASPNETCORE_ENVIRONMENT"
+          value: "kubernetes"
+        - name: ASPNETCORE_URLS
+          value: http://+:80
+        resources:
+          requests:
+            cpu: 100m
+            memory: 100Mi
+          limits:
+            cpu: 100m
+            memory: 100Mi
+...
